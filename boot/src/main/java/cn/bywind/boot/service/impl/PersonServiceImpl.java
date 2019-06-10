@@ -6,8 +6,11 @@ import cn.bywind.boot.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service  //需要spring来管理的
+@Transactional(rollbackFor = Exception.class, propagation = Propagation.NOT_SUPPORTED) //支持事务
 public class PersonServiceImpl implements PersonService {
 
     //mybatis的springboot依赖
