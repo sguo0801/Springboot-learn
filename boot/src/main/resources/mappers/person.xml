@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--xml是充当mybatis的mapper,上面是所添加的文件头-->
+
+<mapper namespace="cn.bywind.boot.dao.PersonDao">
+    <!--下面的方法是从上面的Dao接口找,且一个接口的所有方法在一个xml文件中,即一个接口对应一个xml文件-->
+    <!--id后面是dao中方法名,然后需要的参数为int,返回的参数是PersonDto-->
+    <select id="getPersonById" parameterType="int" resultType="cn.bywind.boot.dto.PersonDto">
+        select * from person where id = #{id};
+        <!--表中不是驼峰命名法,如果不是user_name as userName,没有as及其后面的内容,那么查询不会有问题,但是封装到Dto中的时候会出错.-->
+    </select>
+</mapper>
